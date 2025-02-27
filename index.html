@@ -1,97 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>EMS Cognitive Evaluation Quiz</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-            background-color: #f4f4f4;
-        }
-        .quiz-container {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-            margin: auto;
-        }
-        .question {
-            margin-bottom: 10px;
-            font-size: 18px;
-        }
-        .options label {
-            display: block;
-            margin: 5px 0;
-        }
-        .submit-btn {
-            margin-top: 10px;
-            padding: 10px;
-            background: #007bff;
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        .result {
-            margin-top: 20px;
-            font-weight: bold;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMT Study Guide & Quiz</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="quiz-container">
-        <h2>EMS Cognitive Evaluation Quiz</h2>
-        <form id="quizForm">
-            <div class="question">
-                <p>1. What should an EMT candidate do if they have been convicted of a felony or misdemeanor?</p>
-                <div class="options">
-                    <label><input type="radio" name="q1" value="a"> Ignore it, as it won't affect certification.</label>
-                    <label><input type="radio" name="q1" value="b"> Disclose it to the certifying agency.</label>
-                    <label><input type="radio" name="q1" value="c"> Only mention it if asked directly.</label>
-                    <label><input type="radio" name="q1" value="d"> Appeal directly to the EMS board.</label>
-                </div>
-            </div>
-            
-            <div class="question">
-                <p>2. What is the primary responsibility of the EMS medical director?</p>
-                <div class="options">
-                    <label><input type="radio" name="q2" value="a"> Operating ambulances.</label>
-                    <label><input type="radio" name="q2" value="b"> Providing financial oversight.</label>
-                    <label><input type="radio" name="q2" value="c"> Overseeing medical protocols and patient care quality.</label>
-                    <label><input type="radio" name="q2" value="d"> Scheduling EMT shifts.</label>
-                </div>
-            </div>
-            
-            <button type="button" class="submit-btn" onclick="checkAnswers()">Submit Answers</button>
-            <p class="result" id="result"></p>
-        </form>
+    <div class="container">
+        <h1>EMT Study Guide & Quiz</h1>
+        <div id="quiz-container">
+            <p id="progress"></p>
+            <div id="question-area"></div>
+            <button id="next-btn">Next</button>
+            <p id="result"></p>
+        </div>
+        <div id="final-score" class="hidden">
+            <h2>Quiz Completed!</h2>
+            <p id="score"></p>
+            <button onclick="restartQuiz()">Try Again</button>
+        </div>
     </div>
-
-    <script>
-        function checkAnswers() {
-            let score = 0;
-            let totalQuestions = 2;
-
-            let answers = {
-                q1: "b",
-                q2: "c"
-            };
-
-            let form = document.getElementById('quizForm');
-            let userAnswers = {
-                q1: form.q1.value,
-                q2: form.q2.value
-            };
-
-            for (let key in answers) {
-                if (userAnswers[key] === answers[key]) {
-                    score++;
-                }
-            }
-
-            document.getElementById('result').innerText = `You scored ${score} out of ${totalQuestions}.`;
-        }
-    </script>
+    <script src="questions.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
